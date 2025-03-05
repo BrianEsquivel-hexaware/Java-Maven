@@ -37,6 +37,7 @@ public class AppTest {
         for (WebElement dashboard : dashboardsResult) {
             Assert.assertFalse(dashboard.getText().isEmpty());
         }
+        dashboardPage.logout();
     }
 
 }
