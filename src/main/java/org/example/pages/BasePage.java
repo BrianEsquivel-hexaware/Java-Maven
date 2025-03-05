@@ -15,7 +15,6 @@ public class BasePage {
         _driver = driver;
     }
 
-    //Hacer metodo para que obtenga el titulo de la pagina ej: Dashboard, PI, Time, etc
     public WebElement getSectionTitle() {
         return _driver.findElement(sectionTitleXP);
     }
@@ -23,5 +22,9 @@ public class BasePage {
     public void logout(){
         _driver.findElement(dropDownMenuXP).click();
         _driver.findElement(logoutButtonXP).click();
+    }
+
+    public void moveToSection(String sectionTitle) {
+        _driver.findElement(By.xpath("//aside[@class='oxd-sidepanel']//li//a//span[text()='"+sectionTitle+"']")).click();
     }
 }
