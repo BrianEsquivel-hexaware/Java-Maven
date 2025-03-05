@@ -3,6 +3,7 @@ package org.example;
 import org.example.pages.AdminPage;
 import org.example.pages.DashboardPage;
 import org.example.pages.LoginPage;
+import org.example.pages.RecruitmentPage;
 import org.example.utils.PropertyUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -56,6 +57,19 @@ public class AppTest {
         WebElement title = adminPage.getSectionTitle();
         Assert.assertTrue(title.getText().contains(adminPage.title));
         adminPage.logout();
+        Thread.sleep(2000);
+        driver.quit();
+    }
+
+    @Test
+    public void testRecruitmentPage() throws InterruptedException {
+        WebDriver driver = new FirefoxDriver();
+        navigateToApp(driver);
+        RecruitmentPage recruitmentPage = new RecruitmentPage(driver);
+        recruitmentPage.moveToSection(recruitmentPage.title);
+        WebElement title = recruitmentPage.getSectionTitle();
+        Assert.assertTrue(title.getText().contains(recruitmentPage.title));
+        recruitmentPage.logout();
         Thread.sleep(2000);
         driver.quit();
     }
