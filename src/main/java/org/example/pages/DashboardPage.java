@@ -9,6 +9,7 @@ import java.util.List;
 public class DashboardPage extends BasePage {
 
     private WebDriver _driver;
+    public final String title = "Dashboard";
 
     public static final By dashboardsXP = By.xpath("//div[@class='oxd-grid-item oxd-grid-item--gutters orangehrm-dashboard-widget']");
 

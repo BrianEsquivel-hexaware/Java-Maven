@@ -20,13 +20,16 @@ import static org.example.utils.PropertyUtils.getUserPass;
 public class AppTest {
 
     @Test
-    public void testApp() throws InterruptedException {
+    public void testLogin() throws InterruptedException {
         WebDriver driver = new FirefoxDriver();
         driver.navigate().to("https://opensource-demo.orangehrmlive.com/");
         Thread.sleep(2000);
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login();
+        Thread.sleep(2000);
         DashboardPage dashboardPage = new DashboardPage(driver);
+        WebElement title = dashboardPage.getSectionTitle();
+        Assert.assertEquals(title.getText(), dashboardPage.title);
         WebDriverWait waitForResults = new WebDriverWait(driver, Duration.ofSeconds(10));
         waitForResults.until(
                 ExpectedConditions.visibilityOfAllElementsLocatedBy(DashboardPage.dashboardsXP));
