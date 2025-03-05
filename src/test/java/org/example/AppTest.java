@@ -1,5 +1,6 @@
 package org.example;
 
+import org.example.pages.AdminPage;
 import org.example.pages.DashboardPage;
 import org.example.pages.LoginPage;
 import org.example.utils.PropertyUtils;
@@ -19,14 +20,18 @@ import static org.example.utils.PropertyUtils.getUserPass;
 
 public class AppTest {
 
-    @Test
-    public void testLogin() throws InterruptedException {
-        WebDriver driver = new FirefoxDriver();
+    private void navigateToApp(WebDriver driver) throws InterruptedException {
         driver.navigate().to("https://opensource-demo.orangehrmlive.com/");
         Thread.sleep(2000);
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login();
         Thread.sleep(2000);
+    }
+
+    @Test
+    public void testDashboard() throws InterruptedException {
+        WebDriver driver = new FirefoxDriver();
+        navigateToApp(driver);
         DashboardPage dashboardPage = new DashboardPage(driver);
         WebElement title = dashboardPage.getSectionTitle();
         Assert.assertEquals(title.getText(), dashboardPage.title);
@@ -38,6 +43,21 @@ public class AppTest {
             Assert.assertFalse(dashboard.getText().isEmpty());
         }
         dashboardPage.logout();
+        Thread.sleep(2000);
+        driver.quit();
+    }
+
+    @Test
+    public void testAdminPage() throws InterruptedException {
+        WebDriver driver = new FirefoxDriver();
+        navigateToApp(driver);
+        AdminPage adminPage = new AdminPage(driver);
+        adminPage.moveToSection(adminPage.title);
+        WebElement title = adminPage.getSectionTitle();
+        Assert.assertTrue(title.getText().contains(adminPage.title));
+        adminPage.logout();
+        Thread.sleep(2000);
+        driver.quit();
     }
 
 }

@@ -24,7 +24,8 @@ public class BasePage {
         _driver.findElement(logoutButtonXP).click();
     }
 
-    public void moveToSection(String sectionTitle) {
+    public void moveToSection(String sectionTitle) throws InterruptedException {
         _driver.findElement(By.xpath("//aside[@class='oxd-sidepanel']//li//a//span[text()='"+sectionTitle+"']")).click();
+        Thread.sleep(2000);
     }
 }
