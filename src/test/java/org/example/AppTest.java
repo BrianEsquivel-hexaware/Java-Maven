@@ -2,6 +2,7 @@ package org.example;
 
 import org.example.pages.DashboardPage;
 import org.example.pages.LoginPage;
+import org.example.utils.PropertyUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -12,6 +13,9 @@ import org.testng.annotations.Test;
 
 import java.time.Duration;
 import java.util.List;
+
+import static org.example.utils.PropertyUtils.getUserApp;
+import static org.example.utils.PropertyUtils.getUserPass;
 
 public class AppTest {
 
