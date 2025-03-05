@@ -8,4 +8,6 @@ public class BasePage {
     public BasePage(WebDriver driver) {
         _driver = driver;
     }
+
+    //Hacer metodo para que obtenga el titulo de la pagina ej: Dashboard, PI, Time, etc.
 }

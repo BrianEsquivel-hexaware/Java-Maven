@@ -1,9 +1,17 @@
 package org.example;
 
+import org.example.pages.DashboardPage;
 import org.example.pages.LoginPage;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
+import org.testng.Assert;
 import org.testng.annotations.Test;
+
+import java.time.Duration;
+import java.util.List;
 
 public class AppTest {
 
@@ -14,6 +22,14 @@ public class AppTest {
         Thread.sleep(2000);
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login();
+        DashboardPage dashboardPage = new DashboardPage(driver);
+        WebDriverWait waitForResults = new WebDriverWait(driver, Duration.ofSeconds(10));
+        waitForResults.until(
+                ExpectedConditions.visibilityOfAllElementsLocatedBy(DashboardPage.dashboardsXP));
+        List<WebElement> dashboardsResult = dashboardPage.getDashboards();
+        for (WebElement dashboard : dashboardsResult) {
+            Assert.assertFalse(dashboard.getText().isEmpty());
+        }
     }
 
 }
