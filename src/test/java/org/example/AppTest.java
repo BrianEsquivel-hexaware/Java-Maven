@@ -9,6 +9,7 @@ import org.example.pages.DashboardPage;
 import org.example.pages.LoginPage;
 import org.example.pages.RecruitmentPage;
 import org.example.utils.PropertyUtils;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -73,6 +74,7 @@ public class AppTest {
         for (WebElement dashboard : dashboardsResult) {
             Assert.assertFalse(dashboard.getText().isEmpty());
         }
+
         dashboardPage.logout();
         Thread.sleep(2000);
         driver.quit();
@@ -87,6 +89,7 @@ public class AppTest {
         adminPage.moveToSection(adminPage.title);
         WebElement title = adminPage.getSectionTitle();
         Assert.assertTrue(title.getText().contains(adminPage.title));
+
         adminPage.logout();
         Thread.sleep(2000);
         driver.quit();
@@ -101,6 +104,9 @@ public class AppTest {
         recruitmentPage.moveToSection(recruitmentPage.title);
         WebElement title = recruitmentPage.getSectionTitle();
         Assert.assertTrue(title.getText().contains(recruitmentPage.title));
+        List<WebElement> jobs = recruitmentPage.searchSpecificJob();
+        Assert.assertFalse(jobs.isEmpty());
+
         recruitmentPage.logout();
         Thread.sleep(2000);
         driver.quit();
