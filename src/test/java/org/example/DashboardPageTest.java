@@ -3,6 +3,7 @@ package org.example;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import org.example.pages.DashboardPage;
+import org.example.utils.ExcelReaderUtils;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
@@ -36,6 +37,15 @@ public class DashboardPageTest extends BaseTest {
         List<WebElement> dashboardsResult = dashboardPage.getDashboards();
         for (WebElement dashboard : dashboardsResult) {
             Assert.assertFalse(dashboard.getText().isEmpty());
+        }
+
+        String filePath = "src/main/java/org/example/utils/DataOrange.xlsx";
+        String sheetName = "DataOrange";
+
+        List<String[]> testData = ExcelReaderUtils.readExcel(filePath, sheetName);
+
+        for (String[] row : testData){
+            System.out.println(row[0]);
         }
 
         dashboardPage.logout();
