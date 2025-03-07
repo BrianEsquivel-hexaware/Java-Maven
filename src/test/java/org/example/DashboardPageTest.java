@@ -18,18 +18,18 @@ import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
 
-public class AppTest extends BaseTest {
+public class DashboardPageTest extends BaseTest {
 
     @BeforeTest
     public void setup() throws IOException {
-        ExtentSparkReporter spark = new ExtentSparkReporter("C:/Users/2000145257/IdeaProjects/Reports/AppTestReport.html");
+        ExtentSparkReporter spark = new ExtentSparkReporter("C:/Users/2000145257/IdeaProjects/Reports/DashboardPageTestReport.html");
         extent = new ExtentReports();
         extent.attachReporter(spark);
     }
 
     @Test
-    public void testDashboard() throws InterruptedException, IOException {
-        test = extent.createTest("Test Dashboard");
+    public void testDashboards() throws InterruptedException, IOException {
+        test = extent.createTest("Test of the Dashboard Page");
         WebDriver driver = new FirefoxDriver();
         navigateToApp(driver);
         DashboardPage dashboardPage = new DashboardPage(driver);
@@ -44,38 +44,6 @@ public class AppTest extends BaseTest {
         }
 
         dashboardPage.logout();
-        Thread.sleep(2000);
-        driver.quit();
-    }
-
-    @Test
-    public void testAdminPage() throws InterruptedException, IOException {
-        test = extent.createTest("Test Admin Page");
-        WebDriver driver = new FirefoxDriver();
-        navigateToApp(driver);
-        AdminPage adminPage = new AdminPage(driver);
-        adminPage.moveToSection(adminPage.title);
-        WebElement title = adminPage.getSectionTitle();
-        Assert.assertTrue(title.getText().contains(adminPage.title));
-
-        adminPage.logout();
-        Thread.sleep(2000);
-        driver.quit();
-    }
-
-    @Test
-    public void testRecruitmentPage() throws InterruptedException, IOException {
-        test = extent.createTest("Test Recruitment Page");
-        WebDriver driver = new FirefoxDriver();
-        navigateToApp(driver);
-        RecruitmentPage recruitmentPage = new RecruitmentPage(driver);
-        recruitmentPage.moveToSection(recruitmentPage.title);
-        WebElement title = recruitmentPage.getSectionTitle();
-        Assert.assertTrue(title.getText().contains(recruitmentPage.title));
-        List<WebElement> jobs = recruitmentPage.searchSpecificJob();
-        Assert.assertFalse(jobs.isEmpty());
-
-        recruitmentPage.logout();
         Thread.sleep(2000);
         driver.quit();
     }
