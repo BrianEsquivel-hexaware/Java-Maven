@@ -2,12 +2,8 @@ package org.example;
 
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
-import org.example.pages.AdminPage;
 import org.example.pages.DashboardPage;
-import org.example.pages.RecruitmentPage;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -30,12 +26,11 @@ public class DashboardPageTest extends BaseTest {
     @Test
     public void testDashboards() throws InterruptedException, IOException {
         test = extent.createTest("Test of the Dashboard Page");
-        WebDriver driver = new FirefoxDriver();
-        navigateToApp(driver);
-        DashboardPage dashboardPage = new DashboardPage(driver);
+        navigateToApp();
+        DashboardPage dashboardPage = new DashboardPage(_driver);
         WebElement title = dashboardPage.getSectionTitle();
         Assert.assertEquals(title.getText(), dashboardPage.title);
-        WebDriverWait waitForResults = new WebDriverWait(driver, Duration.ofSeconds(10));
+        WebDriverWait waitForResults = new WebDriverWait(_driver, Duration.ofSeconds(10));
         waitForResults.until(
                 ExpectedConditions.visibilityOfAllElementsLocatedBy(DashboardPage.dashboardsXP));
         List<WebElement> dashboardsResult = dashboardPage.getDashboards();
@@ -45,7 +40,6 @@ public class DashboardPageTest extends BaseTest {
 
         dashboardPage.logout();
         Thread.sleep(2000);
-        driver.quit();
     }
 
 }

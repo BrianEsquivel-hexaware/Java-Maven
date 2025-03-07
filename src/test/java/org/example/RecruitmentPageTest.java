@@ -25,9 +25,8 @@ public class RecruitmentPageTest extends BaseTest{
     @Test
     public void checksForVacancies_available() throws InterruptedException, IOException {
         test = extent.createTest("Test for a vacancy availability");
-        WebDriver driver = new FirefoxDriver();
-        navigateToApp(driver);
-        RecruitmentPage recruitmentPage = new RecruitmentPage(driver);
+        navigateToApp();
+        RecruitmentPage recruitmentPage = new RecruitmentPage(_driver);
         recruitmentPage.moveToSection(recruitmentPage.title);
         WebElement title = recruitmentPage.getSectionTitle();
         Assert.assertTrue(title.getText().contains(recruitmentPage.title));
@@ -36,15 +35,13 @@ public class RecruitmentPageTest extends BaseTest{
 
         recruitmentPage.logout();
         Thread.sleep(2000);
-        driver.quit();
     }
 
     @Test
     public void checksForVacancies_notAvailable() throws InterruptedException, IOException {
         test = extent.createTest("Test for a vacancy not-available");
-        WebDriver driver = new FirefoxDriver();
-        navigateToApp(driver);
-        RecruitmentPage recruitmentPage = new RecruitmentPage(driver);
+        navigateToApp();
+        RecruitmentPage recruitmentPage = new RecruitmentPage(_driver);
         recruitmentPage.moveToSection(recruitmentPage.title);
         WebElement title = recruitmentPage.getSectionTitle();
         Assert.assertTrue(title.getText().contains(recruitmentPage.title));
@@ -52,7 +49,6 @@ public class RecruitmentPageTest extends BaseTest{
 
         recruitmentPage.logout();
         Thread.sleep(2000);
-        driver.quit();
     }
 
 }

@@ -24,16 +24,14 @@ public class AdminPageTest extends BaseTest {
     @Test
     public void testAdminPage() throws InterruptedException, IOException {
         test = extent.createTest("Test of the Admin Page");
-        WebDriver driver = new FirefoxDriver();
-        navigateToApp(driver);
-        AdminPage adminPage = new AdminPage(driver);
+        navigateToApp();
+        AdminPage adminPage = new AdminPage(_driver);
         adminPage.moveToSection(adminPage.title);
         WebElement title = adminPage.getSectionTitle();
         Assert.assertTrue(title.getText().contains(adminPage.title));
 
         adminPage.logout();
         Thread.sleep(2000);
-        driver.quit();
     }
 
 }
