@@ -51,4 +51,16 @@ public class RecruitmentPageTest extends BaseTest{
         Thread.sleep(2000);
     }
 
+    @Test
+    public void addsNewVacancyAndSearches_Available() throws InterruptedException, IOException {
+        test = extent.createTest("Creates a vacancy and searches for it");
+        navigateToApp();
+        RecruitmentPage recruitmentPage = new RecruitmentPage(_driver);
+        recruitmentPage.moveToSection(recruitmentPage.title);
+        WebElement title = recruitmentPage.getSectionTitle();
+        Assert.assertTrue(title.getText().contains(recruitmentPage.title));
+        recruitmentPage.addVacancy("Astronauta", "IT Manager");
+
+    }
+
 }
