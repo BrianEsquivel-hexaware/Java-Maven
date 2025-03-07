@@ -24,36 +24,7 @@ import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
 
-public class AppTest {
-
-    ExtentReports extent;
-    ExtentTest test;
-
-    private void navigateToApp(WebDriver driver) throws InterruptedException, IOException {
-        driver.navigate().to("https://opensource-demo.orangehrmlive.com/");
-        Thread.sleep(2000);
-        LoginPage loginPage = new LoginPage(driver);
-        loginPage.login();
-        Thread.sleep(2000);
-    }
-
-    @BeforeTest
-    public void setup(){
-        ExtentSparkReporter spark = new ExtentSparkReporter("C:/Users/2000145257/IdeaProjects/Reports/TestsReport.html");
-        extent = new ExtentReports();
-        extent.attachReporter(spark);
-    }
-
-    @AfterMethod
-    public void tearDown(ITestResult result){
-        if(result.getStatus() == ITestResult.SUCCESS){
-            test.log(Status.PASS, "Successfully passed");
-        } else if (result.getStatus() == ITestResult.FAILURE){
-            test.log(Status.FAIL, "Test failed in: " + result.getThrowable().getMessage());
-        } else if (result.getStatus() == ITestResult.SKIP){
-            test.log(Status.SKIP, "Skipped test");
-        }
-    }
+public class AppTest extends BaseTest {
 
     @Test
     public void testDashboard() throws InterruptedException, IOException {
@@ -106,11 +77,6 @@ public class AppTest {
         recruitmentPage.logout();
         Thread.sleep(2000);
         driver.quit();
-    }
-
-    @AfterTest
-    public void teardown(){
-        extent.flush();
     }
 
 }
