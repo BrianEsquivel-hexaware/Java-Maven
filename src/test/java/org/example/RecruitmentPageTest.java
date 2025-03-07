@@ -59,7 +59,12 @@ public class RecruitmentPageTest extends BaseTest{
         recruitmentPage.moveToSection(recruitmentPage.title);
         WebElement title = recruitmentPage.getSectionTitle();
         Assert.assertTrue(title.getText().contains(recruitmentPage.title));
-        recruitmentPage.addVacancy("Astronauta", "IT Manager");
+        recruitmentPage.addVacancy("Astronauta", "IT Manager", "Timothy Lewis Amiano", "1");
+        List<WebElement> vacancies = recruitmentPage.returnVacancyList("Astronauta");
+        Assert.assertFalse(vacancies.isEmpty());
+
+        recruitmentPage.logout();
+        Thread.sleep(2000);
 
     }
 
