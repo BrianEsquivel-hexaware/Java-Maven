@@ -3,6 +3,7 @@ package org.example;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import org.example.pages.AdminPage;
+import org.example.utils.PropertyUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -16,7 +17,8 @@ public class AdminPageTest extends BaseTest {
 
     @BeforeTest
     public void setup() throws IOException {
-        ExtentSparkReporter spark = new ExtentSparkReporter("C:/Users/2000145257/IdeaProjects/Reports/AdminPageTestReport.html");
+        String basePath = PropertyUtils.getProperty("reports.source");
+        ExtentSparkReporter spark = new ExtentSparkReporter(basePath+"AdminPageTestReport.html");
         extent = new ExtentReports();
         extent.attachReporter(spark);
     }
