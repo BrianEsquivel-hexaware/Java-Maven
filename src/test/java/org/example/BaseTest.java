@@ -6,6 +6,7 @@ import com.aventstack.extentreports.Status;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import org.example.pages.LoginPage;
 import org.openqa.selenium.WebDriver;
+import org.testng.ITestContext;
 import org.testng.ITestResult;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
@@ -17,13 +18,6 @@ public class BaseTest {
 
     ExtentReports extent;
     ExtentTest test;
-
-    @BeforeTest
-    public void setup(){
-        ExtentSparkReporter spark = new ExtentSparkReporter("C:/Users/2000145257/IdeaProjects/Reports/TestsReport.html");
-        extent = new ExtentReports();
-        extent.attachReporter(spark);
-    }
 
     @AfterMethod
     public void tearDown(ITestResult result){
