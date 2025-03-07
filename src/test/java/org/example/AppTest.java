@@ -8,8 +8,6 @@ import org.example.pages.AdminPage;
 import org.example.pages.DashboardPage;
 import org.example.pages.LoginPage;
 import org.example.pages.RecruitmentPage;
-import org.example.utils.PropertyUtils;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -22,18 +20,16 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
+import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
-
-import static org.example.utils.PropertyUtils.getUserApp;
-import static org.example.utils.PropertyUtils.getUserPass;
 
 public class AppTest {
 
     ExtentReports extent;
     ExtentTest test;
 
-    private void navigateToApp(WebDriver driver) throws InterruptedException {
+    private void navigateToApp(WebDriver driver) throws InterruptedException, IOException {
         driver.navigate().to("https://opensource-demo.orangehrmlive.com/");
         Thread.sleep(2000);
         LoginPage loginPage = new LoginPage(driver);
@@ -43,7 +39,7 @@ public class AppTest {
 
     @BeforeTest
     public void setup(){
-        ExtentSparkReporter spark = new ExtentSparkReporter("src/main/java/org/example/resources/application/TestsReport.html");
+        ExtentSparkReporter spark = new ExtentSparkReporter("C:/Users/2000145257/IdeaProjects/Reports/TestsReport.html");
         extent = new ExtentReports();
         extent.attachReporter(spark);
     }
@@ -60,7 +56,7 @@ public class AppTest {
     }
 
     @Test
-    public void testDashboard() throws InterruptedException {
+    public void testDashboard() throws InterruptedException, IOException {
         test = extent.createTest("Test Dashboard");
         WebDriver driver = new FirefoxDriver();
         navigateToApp(driver);
@@ -81,7 +77,7 @@ public class AppTest {
     }
 
     @Test
-    public void testAdminPage() throws InterruptedException {
+    public void testAdminPage() throws InterruptedException, IOException {
         test = extent.createTest("Test Admin Page");
         WebDriver driver = new FirefoxDriver();
         navigateToApp(driver);
@@ -96,7 +92,7 @@ public class AppTest {
     }
 
     @Test
-    public void testRecruitmentPage() throws InterruptedException {
+    public void testRecruitmentPage() throws InterruptedException, IOException {
         test = extent.createTest("Test Recruitment Page");
         WebDriver driver = new FirefoxDriver();
         navigateToApp(driver);
