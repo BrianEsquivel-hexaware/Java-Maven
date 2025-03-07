@@ -23,16 +23,32 @@ public class RecruitmentPageTest extends BaseTest{
     }
 
     @Test
-    public void testRecruitmentPage() throws InterruptedException, IOException {
-        test = extent.createTest("Test of the Recruitment Page");
+    public void checksForVacancies_available() throws InterruptedException, IOException {
+        test = extent.createTest("Test for a vacancy availability");
         WebDriver driver = new FirefoxDriver();
         navigateToApp(driver);
         RecruitmentPage recruitmentPage = new RecruitmentPage(driver);
         recruitmentPage.moveToSection(recruitmentPage.title);
         WebElement title = recruitmentPage.getSectionTitle();
         Assert.assertTrue(title.getText().contains(recruitmentPage.title));
-        List<WebElement> jobs = recruitmentPage.searchSpecificJob();
+        List<WebElement> jobs = recruitmentPage.returnJobsList("Sales Representative");
         Assert.assertFalse(jobs.isEmpty());
+
+        recruitmentPage.logout();
+        Thread.sleep(2000);
+        driver.quit();
+    }
+
+    @Test
+    public void checksForVacancies_notAvailable() throws InterruptedException, IOException {
+        test = extent.createTest("Test for a vacancy not-available");
+        WebDriver driver = new FirefoxDriver();
+        navigateToApp(driver);
+        RecruitmentPage recruitmentPage = new RecruitmentPage(driver);
+        recruitmentPage.moveToSection(recruitmentPage.title);
+        WebElement title = recruitmentPage.getSectionTitle();
+        Assert.assertTrue(title.getText().contains(recruitmentPage.title));
+        Assert.assertTrue(recruitmentPage.noRecordsFoundSearch("qwer"));
 
         recruitmentPage.logout();
         Thread.sleep(2000);

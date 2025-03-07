@@ -37,6 +37,6 @@ public class BaseTest {
         Thread.sleep(2000);
         LoginPage loginPage = new LoginPage(driver);
         loginPage.login();
-        Thread.sleep(2000);
+        Thread.sleep(3000);
     }
 }
