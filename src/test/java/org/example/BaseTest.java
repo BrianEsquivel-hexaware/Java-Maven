@@ -51,6 +51,5 @@ public class BaseTest {
         LoginPage loginPage = new LoginPage(_driver);
         loginPage.login();
         Thread.sleep(3000);
-        ReportUtils.addScreenShotSuccess(_driver, test, "Successful Login");
     }
 }

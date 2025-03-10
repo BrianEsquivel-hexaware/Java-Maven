@@ -4,14 +4,14 @@ import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import org.example.pages.AdminPage;
 import org.example.utils.PropertyUtils;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
+
+import static org.example.utils.ScreenShotUtils.clearFolder;
 
 public class AdminPageTest extends BaseTest {
 
@@ -21,6 +21,7 @@ public class AdminPageTest extends BaseTest {
         ExtentSparkReporter spark = new ExtentSparkReporter(basePath+"AdminPageTestReport.html");
         extent = new ExtentReports();
         extent.attachReporter(spark);
+        clearFolder(PropertyUtils.getProperty("reportSS.source"));
     }
 
     @Test

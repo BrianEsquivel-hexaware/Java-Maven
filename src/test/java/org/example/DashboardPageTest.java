@@ -3,7 +3,6 @@ package org.example;
 import com.aventstack.extentreports.ExtentReports;
 import com.aventstack.extentreports.reporter.ExtentSparkReporter;
 import org.example.pages.DashboardPage;
-import org.example.utils.ExcelReaderUtils;
 import org.example.utils.PropertyUtils;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -16,6 +15,8 @@ import java.io.IOException;
 import java.time.Duration;
 import java.util.List;
 
+import static org.example.utils.ScreenShotUtils.clearFolder;
+
 public class DashboardPageTest extends BaseTest {
 
     @BeforeTest
@@ -24,6 +25,7 @@ public class DashboardPageTest extends BaseTest {
         ExtentSparkReporter spark = new ExtentSparkReporter(basePath+"DashboardPageTestReport.html");
         extent = new ExtentReports();
         extent.attachReporter(spark);
+        clearFolder(PropertyUtils.getProperty("reportSS.source"));
     }
 
     @Test

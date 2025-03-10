@@ -6,15 +6,15 @@ import org.example.pages.RecruitmentPage;
 import org.example.utils.ExcelReaderUtils;
 import org.example.utils.PropertyUtils;
 import org.example.utils.ReportUtils;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.firefox.FirefoxDriver;
 import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 
 import java.io.IOException;
 import java.util.List;
+
+import static org.example.utils.ScreenShotUtils.clearFolder;
 
 public class RecruitmentPageTest extends BaseTest{
 
@@ -24,6 +24,7 @@ public class RecruitmentPageTest extends BaseTest{
         ExtentSparkReporter spark = new ExtentSparkReporter(basePath+"RecruitmentPageTestReport.html");
         extent = new ExtentReports();
         extent.attachReporter(spark);
+        clearFolder(PropertyUtils.getProperty("reportSS.source"));
     }
 
     @Test
@@ -35,7 +36,7 @@ public class RecruitmentPageTest extends BaseTest{
         WebElement title = recruitmentPage.getSectionTitle();
         Assert.assertTrue(title.getText().contains(recruitmentPage.title));
 
-        String filePath = "src/main/java/org/example/utils/DataOrange.xlsx";
+        String filePath = "src/main/java/org/example/utils/exceldata/DataOrange.xlsx";
         String sheetName = "DataOrange";
 
         List<String[]> testData = ExcelReaderUtils.readExcel(filePath, sheetName);
@@ -45,7 +46,6 @@ public class RecruitmentPageTest extends BaseTest{
         for (String[] row : testData){
             jobs = recruitmentPage.returnJobsList(row[0]);
             Assert.assertFalse(jobs.isEmpty());
-            ReportUtils.addScreenShotSuccess(_driver, test, "Successful Search");
             jobs.clear();
             Thread.sleep(2000);
         }

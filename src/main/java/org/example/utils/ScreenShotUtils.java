@@ -15,8 +15,22 @@ public class ScreenShotUtils {
         TakesScreenshot ts = (TakesScreenshot) driver;
         File srcFile = ts.getScreenshotAs(OutputType.FILE);
         Random rand = new Random();
-        File destFile = new File("C:/Users/2000145257/IdeaProjects/ReportsSS/"+rand.toString()+".png");
+        File destFile = new File(PropertyUtils.getProperty("reportSS.source")+"/"+rand+".png");
         FileUtils.copyFile(srcFile, destFile);
         return destFile.getAbsolutePath();
+    }
+
+    public static void clearFolder(String path){
+        File folder = new File(path);
+
+        if (folder.exists() && folder.isDirectory()) {
+            File[] files = folder.listFiles();
+
+            if(files != null){
+                for(File file : files){
+                    file.delete();
+                }
+            }
+        }
     }
 }
