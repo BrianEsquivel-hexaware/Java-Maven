@@ -21,7 +21,7 @@ public class RecruitmentPage extends BasePage {
     public static final By jobTitle = By.xpath("//div[@class='oxd-grid-4 orangehrm-full-width-grid']//div[1]//div[1]//div[2]//div[1]//div[1]//div[2]//i[1]");
     public static final By jobSpecificTitleDiv = By.xpath("//div[@role='listbox']");
     public static final By submitButton = By.xpath("//button[@type='submit']");
-    public static final By vacanciesDiv = By.xpath("//div[@class='oxd-table-body']");
+    public static final By vacanciesDiv = By.xpath("//div[@class='oxd-table-card']");
     public static final By noRecordsXP = By.xpath("//span[normalize-space()='No Records Found']");
     public static final By addBtnXP = By.xpath("//button[@class='oxd-button oxd-button--medium oxd-button--secondary']");
     public static final By addHeaderXP = By.xpath("//h6[normalize-space()='Add Vacancy']");

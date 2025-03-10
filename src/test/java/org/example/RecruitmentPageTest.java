@@ -40,12 +40,14 @@ public class RecruitmentPageTest extends BaseTest{
 
         List<String[]> testData = ExcelReaderUtils.readExcel(filePath, sheetName);
         testData.remove(0);
+        List<WebElement> jobs;
 
         for (String[] row : testData){
-            List<WebElement> jobs = recruitmentPage.returnJobsList(row[0]);
+            jobs = recruitmentPage.returnJobsList(row[0]);
             Assert.assertFalse(jobs.isEmpty());
             ReportUtils.addScreenShotSuccess(_driver, test, "Successful Search");
             Thread.sleep(2000);
+            jobs.clear();
         }
 
         recruitmentPage.logout();
