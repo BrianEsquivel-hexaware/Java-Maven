@@ -7,13 +7,15 @@ import org.openqa.selenium.WebDriver;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.Random;
 
 public class ScreenShotUtils {
 
     public static String getScreenShotPath(WebDriver driver) throws IOException {
         TakesScreenshot ts = (TakesScreenshot) driver;
         File srcFile = ts.getScreenshotAs(OutputType.FILE);
-        File destFile = new File("C:/Users/2000145257/IdeaProjects/ReportsSS/actualSS.png");
+        Random rand = new Random();
+        File destFile = new File("C:/Users/2000145257/IdeaProjects/ReportsSS/"+rand.toString()+".png");
         FileUtils.copyFile(srcFile, destFile);
         return destFile.getAbsolutePath();
     }

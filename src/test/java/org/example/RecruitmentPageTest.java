@@ -46,8 +46,8 @@ public class RecruitmentPageTest extends BaseTest{
             jobs = recruitmentPage.returnJobsList(row[0]);
             Assert.assertFalse(jobs.isEmpty());
             ReportUtils.addScreenShotSuccess(_driver, test, "Successful Search");
-            Thread.sleep(2000);
             jobs.clear();
+            Thread.sleep(2000);
         }
 
         recruitmentPage.logout();
