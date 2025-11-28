@@ -1,0 +1,43 @@
+Notas de Grabación Video_2017-02-16_120601_EBS en carpeta Inducción a EBS:
+- Las responsabilidades son lo que se va a hacer en cada módulo financiero
+- Lo que más toca revisar es GL que es la contabilidad general
+- Uso recurrente del módulo de Help-Desk
+- En la pantalla de Usuarios se puede dar de alta usuarios y responsabilidades
+- Nombre de usuario generalmente es el número de Oxxo
+- Se usa mucho el signo de porcentaje para realizar búsquedas
+- Si tiene una fecha de caducidad y no se deshabilita, no se podrá usar esa responsabilidad pasando esa fecha
+- Botón de sombrerito es para cambiar de responsabilidad de manera más rápida
+- Las responsabilidades dependen del proceso que se esté trabajando en finanzas
+- Administrador funcional como responsabilidad no aparece a todos los usuarios, sólo aquellos a los que le aparece tienen la opción para que le aparezca a otros
+- Con local se refiere a la plaza con la que se va a estar trabajando
+- La importación de asientos contables se hace desde la plataforma de GL
+- Se debe preguntar bien desde que responsabilidad se estará trabajando ya que cada una contiene diferentes elementos y opciones para trabajar en distintos procesos del sistema
+- Pedir evidencias a Devs de que sí funciona lo que dicen para ahorrar tiempos contados
+- Dentro del navegador de GL se va a la ruta Informes: Solicitud y la opción estándar abre otra pantalla para levantar dicha solicitud
+- Fecha tomada en cuenta es la fecha transacción
+- Número de proveedor se puede dejar en blanco al seleccionar un rango de fechas, lo que sí pide a fuerza es las fechas del periodo
+- Si un elemento del listado de solicitudes termina en Advertencia es que pudo haber faltado un dato, pero no es crítico
+- Muchas veces sale error al haber generado cuentas contables pero no se encuentran, entonces éstas se pueden ingresar manualmente en el sistema de GL
+- Si se ingresa una combinación que ya existe, mostrará un popup diciendo que la combinación ya existe
+
+
+Notas de Grabación 2017-11-09 09.42 Introducción Oracle EBS en carpeta Manuales ORACLE:
+- Vienen diversos módulos en GL para hacer operaciones como las diferentes combinaciones de cuenta, tipos de cambios, ingreso de asientos, etc
+- Si un usuario crea una cuenta y otro usuario quiere verla, no podrá hasta que el primero le de acceso a su cuenta por cuestiones de protección de datos
+- Para poder establecer los valores de los campos de una Flexfield se navega por la ruta Configuración: Financiera: Flexfields: Validación: Valores, asegurándose que la responsabilidad en uso es la de MX de Oxxo
+- Para que se pueda agregar una Flexfield se deben de tener los valores de Aplicación, Título, Estructura, Segmento, Valor Independiente, Valor y Descripción
+- Para no tener que regresar a GL, se puede navegar desde las mismas pantallas que abre la aplicación, navegando a través de las mismas rutas, ya que abren las mismas pantallas
+- Para agregar una cuenta contable se necesita saber la Compañía, Estado Financiero, Centro de Responsabilidad, Cuenta, Auxiliar, Futuro y la Intercompañía
+- Al llenar los campos en las pantallas, los de color amarillo son los requeridos para poder completar cierta operación
+- Hay periodos en AR, GL y AP, puede que estén en ciertos módulos pero en otros no
+- IMMEX es la impulsora de mercados de México
+- Oracle EBS es el Oracle E-Business Suite
+- Folio Pago es la info que viaja de POS hacia IMMEX referente a TAE y mercancías generales
+- Poscel es un sistema de venta y compra de tarjetas de Telcel
+- MAB es mercancía a bordo
+- OM es Oracle Management donde se generan los pedidos que viajan hacia AR
+- TAE es el tiempo aire electrónico
+- Autoinvoice es el proceso dentro de Oracle AR que factura las líneas o pedidos
+- Facturación digital es un proceso que formaliza y valida ante el SAT una factura o nota de crédito
+- Concurrente es la ejecución de proceso dentro de Oracle
+- Sistema Satélite son aquellos ligados a IMMEX que ayudan a la operación diaria
